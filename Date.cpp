@@ -2,6 +2,7 @@
 // Created by Kely Gbedemah on 10/19/26.
 //
  #include "Date.h"
+#include <string>
 
 int Date::getMonth() const {
  return month;
@@ -53,3 +54,30 @@ void Date::setDate(int m, int d, int y) {
  int Date::lastDay(int month,int year) const {
   return daysInMonth(month, year);
  }
+std::string Date::toNumericString() const {
+ return std::to_string(month)+ "/"+
+  std::to_string(day)+ "/"+
+   std::to_string(year);
+}
+std::string Date::toMonthFirstString() const {
+ const std::string months[] = {
+  "", "January", "February", "March", "April",
+  "May", "June", "July", "August",
+  "September", "October", "November", "December"
+};
+
+ return months[month] + " " +
+        std::to_string(day) + ", " +
+        std::to_string(year);
+}
+std::string Date::toDayFirstString() const {
+ const std::string months[] = {
+  "", "January", "February", "March", "April",
+  "May", "June", "July", "August",
+  "September", "October", "November", "December"
+};
+
+ return std::to_string(day) + " " +
+        months[month] + " " +
+        std::to_string(year);
+}
